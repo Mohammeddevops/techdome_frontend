@@ -1,51 +1,42 @@
-name: Node.js CI
+name: CI/CD Pipeline
 
 on:
   push:
-    branches: ["main"]
-  # pull_request:
-  #   branches: ["main"]
-  
+    branches:
+      - main  
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18]  # Adjust the version to match your project's requirements
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2  # Updated to v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2  # Updated to v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: |
+          npm ci  # Use npm ci for clean installs in CI environments
+
+      - name: Build application
+        run: |
+          npm run build
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
 
     steps:
-      - name: Checkout Code
+      - name: Deploy to Static Server
         uses: actions/checkout@v2
 
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          registry-url: https://registry.npmjs.org/
+      - name: Install Serve
+        run: npm install -g serve
 
-      - name: Update npm
-        run: npm install -g npm@latest
-
-      - name: Update Browserslist
-        run: npx update-browserslist-db@latest
-
-      - name: Install Dependencies
-        run: npm ci
-
-      - name: Run ESLint
-        run: npm run lint  # Adjust the script name according to your project setup
-
-      - name: Build and Test
+      - name: Deploy
         run: |
-          npm run build --if-present
-          npm test
-      - name: Install gh-pages
-        run: npm install gh-pages
-        
-      - name: Deploy with gh-pages
-        run: |
-          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          serve -s build
