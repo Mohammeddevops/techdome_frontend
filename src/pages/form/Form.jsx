@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import "./form.scss"
 import NavBar from '../../components/navbar/NavBar'
 import { Button } from '@mui/material'
-import img from "../../assests/img2.png"
+// import img from "../../assests/img2.png"
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { addBlog, deleteBlog, getBlogs, updateBlog } from '../../actions/blogAction'
