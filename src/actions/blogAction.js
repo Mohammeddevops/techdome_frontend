@@ -6,7 +6,7 @@ import axiosNew from "../apiConfig/api";
 
 const uploadData = async (data, dispatch) => {
     try {
-        const config = { headers: { "Conetnt-Type": "application/json" } };
+        const config = { headers: { "Content-Type": "application/json" } };
         const res = await axiosNew.post("/add_blog", data, config);
         dispatch({ type: ADD_NEW_BLOG, payload: res.data.blog });
     } catch (error) {
