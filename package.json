@@ -26,6 +26,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "update-browserslist": "npx update-browserslist-db@latest"
     "lint": "eslint .",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
