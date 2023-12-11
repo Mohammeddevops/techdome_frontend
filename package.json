@@ -28,7 +28,7 @@
   "scripts": {
     "lint": "eslint .",
     "predeploy": "npm run build",
-    "deploy": "./node_modules/gh-pages/bin/gh-pages -d build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build --no-warnings",
     "test": "react-scripts test --passWithNoTests",
