@@ -25,7 +25,7 @@ const Form = () => {
         if (!token) {
             navigate("/login");
         }
-    }, [isAuthenticated]);
+    }, [isAuthenticated, navigate]);
 
 
     //////////////////---------- ADD blog ----//////////////////////////////
@@ -41,7 +41,7 @@ const Form = () => {
         if (user) {
             setBlog({ ...blog, "user_id": user._id });
         }
-    }, [user]);
+    }, [user, blog]);
 
     const handleChange = (e) => {
         setBlog({ ...blog, [e.target.name]: e.target.value });
@@ -66,7 +66,7 @@ const Form = () => {
 
     useEffect(() => {
         dispatch(getBlogs());
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         if (blogs) {
