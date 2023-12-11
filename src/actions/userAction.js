@@ -1,4 +1,5 @@
-import { LOGIN_SUCCESS, LOGIN_REQUEST, LOAD_REQUEST, LOAD_SUCCESS, LOAD_FAIL, LOGOUT_SUCCESS } from "../constants/userConstants";
+import { LOGIN_SUCCESS, LOAD_SUCCESS, LOGOUT_SUCCESS } from "../constants/userConstants";
+// import { LOGIN_SUCCESS, LOGIN_REQUEST, LOAD_REQUEST, LOAD_SUCCESS, LOAD_FAIL, LOGOUT_SUCCESS } from "../constants/userConstants";
 import axios from "../apiConfig/api";
 
 export const registeruser = (userData, navigate, fun) => async () => {
