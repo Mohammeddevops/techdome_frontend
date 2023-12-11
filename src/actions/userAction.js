@@ -5,7 +5,7 @@ export const registeruser = (userData, navigate, fun) => async () => {
     try {
         const config = { headers: { "Content-Type": "application/json" } };
         const res = await axios.post("/register", userData, config);
-        if (res.status == 201) {
+        if (res.status === 201) {
             navigate("/login");
         } else {
             window.alert("somthing went wrong");
@@ -23,7 +23,7 @@ export const loginUser = (userData, fun) => async (dispatch) => {
     try {
         const config = { headers: { "Content-Type": "application/json" } };
         const res = await axios.post("/login", userData, config);
-        if (res.status == 200) {
+        if (res.status === 200) {
             localStorage.setItem("userToken", res.data.token);
             dispatch({ type: LOGIN_SUCCESS, payload: res.data.user });
         } else {
