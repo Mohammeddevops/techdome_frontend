@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14]  # Adjust the version to match your project's requirements
+        node-version: [18]  # Adjust the version to match your project's requirements
 
     steps:
       - name: Checkout Code
