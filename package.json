@@ -26,6 +26,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "test": "react-scripts test --passWithNoTests",
     "lint": "eslint .",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
