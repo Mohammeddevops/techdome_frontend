@@ -26,7 +26,6 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    ,
     "lint": "eslint .",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
