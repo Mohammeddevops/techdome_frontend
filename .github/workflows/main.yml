@@ -24,20 +24,14 @@ jobs:
           node-version: ${{ matrix.node-version }}
           registry-url: https://registry.npmjs.org/
 
-      - name: Cache Node Modules
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-
       - name: Install Dependencies
         run: npm ci
 
-      - name: Debug Node Modules
-        run: |
-          ls -l
-          ls -l node_modules
+      - name: Update Browserslist
+        run: npx update-browserslist-db@latest
+
+      - name: Run ESLint
+        run: npm run lint  # Adjust the script name according to your project setup
 
       - name: Build and Test
         run: |
